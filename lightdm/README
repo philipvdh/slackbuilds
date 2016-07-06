@@ -1,0 +1,10 @@
+SlackBuild for lightdm
+
+https://www.freedesktop.org/wiki/Software/LightDM/
+
+This needs pam, it was tested with Willy's Connamon SlackBuilds:
+https://cinnamonslackbuilds.github.io/
+
+This requires a lightdm user and group which can be created like so:
+# groupadd -g 800 lightdm
+# useradd -d /var/lib/lightdm -s /bin/lightdm -u 800 -g 800 lightdm

@@ -1,0 +1,10 @@
+ovmf is a uefi firmware for qemu.
+This package is repackaged from the rpms found here:
+https://www.kraxel.org/repos/jenkins/edk2/
+
+Add this to /etc/libvirt/qemu.conf:
+nvram = [
+   "/usr/share/ovmf-x64/OVMF_CODE-pure-efi.fd:/usr/share/ovmf-x64/OVMF_VARS-pure-efi.fd",
+]
+
+

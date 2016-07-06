@@ -1,0 +1,8 @@
+SlackBuild for lightdm-gtk-greeter
+
+gtk-greeter for lightdm
+https://launchpad.net/lightdm-gtk-greeter/
+
+This needs pam, it was tested with Willy's Connamon SlackBuilds:
+https://cinnamonslackbuilds.github.io/
+

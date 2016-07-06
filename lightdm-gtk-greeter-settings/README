@@ -1,0 +1,8 @@
+SlackBuild for lightdm-gtk-greeter-settings
+
+Settings tool for lightdm-gtk-greeter
+https://launchpad.net/lightdm-gtk-greeter-settings
+
+This requires python-distutils-extra from SBo build with PYTHON3=yes
+and python3 ofcourse
+

@@ -1,0 +1,12 @@
+README.SLACKWARE for lightdm
+
+If you would like to use lightdm as the login manager in runlevel 4, add the
+following lines to /etc/rc.d/rc.4 just above the section that tries to 
+start gdm:
+
+  # Try to use lightdm login manager.  This comes first, because if lightdm is 
+  # installed, then the user probably wants to use it by default:
+  if [ -x /usr/bin/lightdm ]; then
+    exec /usr/bin/lightdm
+  fi
+
