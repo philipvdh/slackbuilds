@@ -22,13 +22,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Lightdm 1.19.2 does not work with lightdm-gtk-greeter
-# Lightdm 1.18.2 contains the relogin bug:
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=829557
-# So we use at 1.18.1
-
 PRGNAM=lightdm
-VERSION=${VERSION:-1.18.1}
+VERSION=${VERSION:-1.18.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_php}
 
@@ -87,6 +82,10 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# Patch for relogin bug:
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=829557
+patch -p1 < $CWD/07-Remove-unused-unititialized-file-descriptors-could-c.patch
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \

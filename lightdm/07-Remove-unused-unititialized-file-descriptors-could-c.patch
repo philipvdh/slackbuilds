@@ -1,0 +1,37 @@
+From 3bdea09e14cbb1cbfc234679d09e2188ff30b9cd Mon Sep 17 00:00:00 2001
+From: Robert Ancell <robert.ancell@canonical.com>
+Date: Wed, 29 Jun 2016 15:16:05 +1200
+Subject: [PATCH] Remove unused unititialized file descriptors - could cause
+ stdin to be closed
+
+---
+ src/greeter-session.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/greeter-session.c b/src/greeter-session.c
+index 862253a..8ebac6f 100644
+--- a/src/greeter-session.c
++++ b/src/greeter-session.c
+@@ -21,10 +21,6 @@ struct GreeterSessionPrivate
+ {
+     /* Greeter running inside this session */
+     Greeter *greeter;
+-
+-    /* Communication channels to communicate with */
+-    int to_greeter_input;
+-    int from_greeter_output;
+ };
+ 
+ G_DEFINE_TYPE (GreeterSession, greeter_session, SESSION_TYPE);
+@@ -108,8 +104,6 @@ greeter_session_finalize (GObject *object)
+     GreeterSession *self = GREETER_SESSION (object);
+ 
+     g_clear_object (&self->priv->greeter);
+-    close (self->priv->to_greeter_input);
+-    close (self->priv->from_greeter_output);
+ 
+     G_OBJECT_CLASS (greeter_session_parent_class)->finalize (object);
+ }
+-- 
+2.8.1
+
