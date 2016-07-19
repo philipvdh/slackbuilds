@@ -1,0 +1,3 @@
+perl-ZMQ-libZMQ3 are perl bindings for ZeroMQ
+
+This requires zeromq
